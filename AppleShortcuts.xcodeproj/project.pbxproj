@@ -13,6 +13,9 @@
 		9AC51DD422FCAD4600D01807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AC51DD322FCAD4600D01807 /* Assets.xcassets */; };
 		9AC51DD722FCAD4600D01807 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AC51DD522FCAD4600D01807 /* LaunchScreen.storyboard */; };
 		9AC51DE222FCAD4600D01807 /* AppleShortcutsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC51DE122FCAD4600D01807 /* AppleShortcutsTests.swift */; };
+		9AC51DED22FCAD9D00D01807 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC51DEC22FCAD9D00D01807 /* MainCollectionViewCell.swift */; };
+		9AC51DEF22FCADB500D01807 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC51DEE22FCADB500D01807 /* UIColor+Extensions.swift */; };
+		9AC51DF122FCADE800D01807 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC51DF022FCADE800D01807 /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		9AC51DDD22FCAD4600D01807 /* AppleShortcutsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppleShortcutsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC51DE122FCAD4600D01807 /* AppleShortcutsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleShortcutsTests.swift; sourceTree = "<group>"; };
 		9AC51DE322FCAD4600D01807 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AC51DEC22FCAD9D00D01807 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
+		9AC51DEE22FCADB500D01807 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		9AC51DF022FCADE800D01807 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +83,10 @@
 		9AC51DCB22FCAD4400D01807 /* AppleShortcuts */ = {
 			isa = PBXGroup;
 			children = (
+				9AC51DF222FCADF100D01807 /* Extensions */,
 				9AC51DCC22FCAD4400D01807 /* AppDelegate.swift */,
 				9AC51DCE22FCAD4400D01807 /* ViewController.swift */,
+				9AC51DEC22FCAD9D00D01807 /* MainCollectionViewCell.swift */,
 				9AC51DD022FCAD4400D01807 /* Main.storyboard */,
 				9AC51DD322FCAD4600D01807 /* Assets.xcassets */,
 				9AC51DD522FCAD4600D01807 /* LaunchScreen.storyboard */,
@@ -94,6 +102,15 @@
 				9AC51DE322FCAD4600D01807 /* Info.plist */,
 			);
 			path = AppleShortcutsTests;
+			sourceTree = "<group>";
+		};
+		9AC51DF222FCADF100D01807 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9AC51DEE22FCADB500D01807 /* UIColor+Extensions.swift */,
+				9AC51DF022FCADE800D01807 /* UIView+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,7 +215,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AC51DCF22FCAD4400D01807 /* ViewController.swift in Sources */,
+				9AC51DED22FCAD9D00D01807 /* MainCollectionViewCell.swift in Sources */,
 				9AC51DCD22FCAD4400D01807 /* AppDelegate.swift in Sources */,
+				9AC51DF122FCADE800D01807 /* UIView+Extension.swift in Sources */,
+				9AC51DEF22FCADB500D01807 /* UIColor+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
