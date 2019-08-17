@@ -10,15 +10,20 @@ import UIKit
 
 class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   
-  //MARK : Properites
+  //MARK : Properties
   let cellId = "Cell"
+  var lists = [List]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
-    
+    self.lists = CoreDataManager.shared.fetchLists()
     setupCollectionView()
     setupNavigationBarController()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.lists = CoreDataManager.shared.fetchLists()
   }
   
   //MARK : Setup Methods
@@ -41,17 +46,19 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
   
   //MARK : CollectionView Delegate Methods
   override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 3
+    return lists.count
   }
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MainCollectionViewCell
+    let list = lists[indexPath.row]
+    cell.listNameLabel.text = list.name
+    cell.setGradientBackgroundColor(colorOne: UIColor.color(data: list.firstColor!)!, colorTow: UIColor.color(data: list.secondColor!)!)
     cell.editButton.addTarget(self, action: #selector(editCellButton), for: .touchUpInside)
-    
-    cell.listNameLabel.text = "List"
-    cell.iconImageView.image = UIImage(named: "Folder")
-    
-    cell.editButton.tag = indexPath.row
+    cell.makeRoundedCorners(by: 16)
+    if let image = list.imageData {
+      cell.iconImageView.image = UIImage(data: image)
+    }
     return cell
   }
   
@@ -65,11 +72,23 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
   
   //MARK : - Actions
   @objc func addNewList() {
-    print("Add new list")
+    let storyboard = UIStoryboard(name: "CreateList", bundle: nil)
+    guard let createListController = storyboard.instantiateViewController(withIdentifier: "CreateListController") as? CreateListController else { return }
+    createListController.delegate = self // delegate connected
+    let vc = UINavigationController(rootViewController: createListController)
+    present(vc, animated: true, completion: nil)
   }
-  
+
   @objc func editCellButton() {
     print("Edit")
   }
 }
 
+extension ViewController: CreateListControllerDelegate {
+  func didAddList(list: List) {
+    self.collectionView.performBatchUpdates({
+      let indexPath = IndexPath(row: lists.count - 1, section: 0)
+      self.collectionView.insertItems(at: [indexPath])
+    }, completion: nil)
+  }
+}
